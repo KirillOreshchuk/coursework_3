@@ -1,6 +1,7 @@
 import json
 import datetime
 
+
 def load_operations(json_file):
     """Загружает данные из файла json"""
     with open(json_file) as file:
@@ -16,7 +17,7 @@ def sorted_list_operations(some_list):
     return sorted_list_operations
 
 
-sorted_list_operations = sorted_list_operations(load_operations("operations.json"))
+result_sorted_list_operations = sorted_list_operations(load_operations("/home/kirill/course3/operations.json"))
 
 
 def get_date(some_dict: dict):

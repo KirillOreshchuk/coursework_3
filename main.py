@@ -1,20 +1,19 @@
-from utils import sorted_list_operations
-from utils import get_date
-from utils import get_description
-from utils import get_full_card_data
-from utils import get_full_account_data
-from utils import get_amount
-from utils import get_currency_name
-from utils import right_date
-from utils import hide_pay_info
-from utils import is_executed
+from src.utils import result_sorted_list_operations
+from src.utils import get_date
+from src.utils import get_description
+from src.utils import get_full_card_data
+from src.utils import get_full_account_data
+from src.utils import get_amount
+from src.utils import get_currency_name
+from src.utils import right_date
+from src.utils import hide_pay_info
+from src.utils import is_executed
 
 
 def main():
     """Основная функция программы"""
-
     count_operations = 0
-    for operation in sorted_list_operations:
+    for operation in result_sorted_list_operations:
         if count_operations < 5:
             if is_executed(operation) is True:
                 count_operations += 1
