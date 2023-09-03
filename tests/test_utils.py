@@ -70,7 +70,3 @@ def test_hide_pay_info():
 
 def test_right_date():
     assert right_date('2019-02-13T04:43:11.374324') == '13.02.2019'
-
-
-
-

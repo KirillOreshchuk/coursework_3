@@ -53,7 +53,7 @@ def get_currency_name(some_dict: dict):
     return some_dict.get("operationAmount")["currency"]["name"]
 
 
-def hide_card_number(full_card_data):
+def hide_card_number(full_card_data: str):
     """Делит номер карты на 4 части и маскирует 6 цифр (наячиная с 7)"""
     card_number = full_card_data.split(" ")[-1]
     hide_part = (len(card_number[6:-4]))
@@ -67,7 +67,7 @@ def hide_card_number(full_card_data):
     return result
 
 
-def hide_account(full_account_data):
+def hide_account(full_account_data: str):
     """Маскирует номер счета"""
     account_number = full_account_data.split()[-1]
     hide_part = len(account_number[-6:-4]) * "*"
@@ -78,7 +78,7 @@ def hide_account(full_account_data):
     return result
 
 
-def hide_pay_info(data):
+def hide_pay_info(data: str):
     """Определяет, какую информацию надо замаскировать(номер карты или номер счета)"""
     if "Счет" in data:
         return hide_account(data)
@@ -88,7 +88,7 @@ def hide_pay_info(data):
         return hide_card_number(data)
 
 
-def right_date(date_json):
+def right_date(date_json: str):
     """Преобразует время в нужный формат"""
     result_date = datetime.datetime.fromisoformat(date_json).strftime("%d.%m.%Y")
 
@@ -100,14 +100,3 @@ def is_executed(some_dict: dict):
     if some_dict.get("state") == "EXECUTED":
 
         return True
-
-
-
-
-
-
-
-
-
-
-
