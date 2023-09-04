@@ -13,7 +13,6 @@ from src.utils import is_executed
 
 def main(file_json):
     """Основная функция программы"""
-    # load_json = load_operations(file_json)
     count_operations = 0
     for operation in sorted_list_operations(load_operations(file_json)):
         if count_operations < 5:
