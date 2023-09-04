@@ -17,9 +17,6 @@ def sorted_list_operations(some_list):
     return sorted_list_operations
 
 
-result_sorted_list_operations = sorted_list_operations(load_operations("/home/kirill/course3/operations.json"))
-
-
 def get_date(some_dict: dict):
     """Получает дату операции"""
     return some_dict.get("date")
@@ -56,13 +53,11 @@ def get_currency_name(some_dict: dict):
 def hide_card_number(full_card_data: str):
     """Делит номер карты на 4 части и маскирует 6 цифр (наячиная с 7)"""
     card_number = full_card_data.split(" ")[-1]
-    hide_part = (len(card_number[6:-4]))
-    hide_number = card_number[:6] + (hide_part * "*") + card_number[-4:]
+    name_card = " ".join(full_card_data.split(" ")[:-1])
+    hide_number = name_card + " " + (card_number[:4] + " " +
+                                     card_number[4:6] + "**" + " " + "****" + " " + card_number[-4:])
 
-    part, part_size = len(hide_number), len(hide_number) // 4
-    digit_part_card = (" ".join([hide_number[i:i+part_size] for i in range(0, part, part_size)]))
-
-    result = " ".join(full_card_data.split(" ")[:-1]) + " " + digit_part_card
+    result = hide_number
 
     return result
 
@@ -70,8 +65,7 @@ def hide_card_number(full_card_data: str):
 def hide_account(full_account_data: str):
     """Маскирует номер счета"""
     account_number = full_account_data.split()[-1]
-    hide_part = len(account_number[-6:-4]) * "*"
-    hide_account_number = hide_part + account_number[-4:]
+    hide_account_number = "**" + account_number[-4:]
 
     result = full_account_data.split()[0] + " " + hide_account_number
 
